@@ -1,0 +1,41 @@
+/*
+Theme Name: Tentacoos
+Theme URI: https://example.com/
+Author: Your Name
+Author URI: https://example.com/
+Description: Starter WordPress Block Theme scaffold to convert a Figma design into a theme.
+Requires at least: 6.3
+Tested up to: 6.6
+Requires PHP: 7.4
+Version: 0.1.0
+License: GPL-2.0-or-later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: tentacoos
+*/
+
+/*
+Note: In block themes, global styles live in theme.json.
+You can add small CSS overrides here if needed.
+*/
+
+/* Smooth in-page scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Offset anchors so content isn't hidden behind sticky header */
+:root {
+  --header-offset: 80px;
+}
+
+[id] {
+  scroll-margin-top: var(--header-offset);
+}
+
+/* Make the site header sticky */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--wp--preset--color--background, #fff);
+}

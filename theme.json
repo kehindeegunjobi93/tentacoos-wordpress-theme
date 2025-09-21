@@ -1,0 +1,97 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 2,
+  "settings": {
+    "appearanceTools": true,
+    "color": {
+      "palette": [
+        { "slug": "foreground", "name": "Foreground", "color": "#0f172a" },
+        { "slug": "background", "name": "Background", "color": "#ffffff" },
+        { "slug": "primary", "name": "Primary", "color": "#2563eb" },
+        { "slug": "secondary", "name": "Secondary", "color": "#10b981" },
+        { "slug": "muted", "name": "Muted", "color": "#64748b" },
+        { "slug": "brand-yellow", "name": "Brand Yellow", "color": "#CC8400" },
+        { "slug": "brand-teal", "name": "Brand Teal", "color": "#06b6d4" },
+        { "slug": "white", "name": "White", "color": "#ffffff" }
+      ],
+      "text": true,
+      "background": true,
+      "defaultPalette": false
+    },
+    "typography": {
+      "fontFamilies": [
+        {
+          "fontFamily": "Poppins, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Noto Sans, sans-serif",
+          "name": "Poppins",
+          "slug": "poppins"
+        },
+        {
+          "fontFamily": "Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Noto Sans, sans-serif",
+          "name": "Inter (System)",
+          "slug": "inter"
+        },
+        {
+          "fontFamily": "Georgia, Cambria, Times New Roman, Times, serif",
+          "name": "Serif",
+          "slug": "serif"
+        }
+      ],
+      "fontSizes": [
+        { "slug": "xs", "size": "12px", "name": "XS" },
+        { "slug": "sm", "size": "14px", "name": "S" },
+        { "slug": "base", "size": "16px", "name": "Base" },
+        { "slug": "lg", "size": "18px", "name": "L" },
+        { "slug": "xl", "size": "20px", "name": "XL" },
+        { "slug": "2xl", "size": "24px", "name": "2XL" },
+        { "slug": "3xl", "size": "30px", "name": "3XL" },
+        { "slug": "4xl", "size": "36px", "name": "4XL" }
+      ],
+      "lineHeight": true,
+      "defaultFontSizes": false
+    },
+    "spacing": {
+      "spacingScale": {
+        "steps": 8,
+        "unit": "px",
+        "max": 64
+      },
+      "units": ["px", "em", "rem", "%", "vh", "vw"]
+    },
+    "layout": {
+      "contentSize": "720px",
+      "wideSize": "1200px"
+    },
+    "blocks": {
+      "core/button": {
+        "typography": { "fontSize": "base" }
+      }
+    }
+  },
+  "styles": {
+    "color": {
+      "text": "var(--wp--preset--color--foreground)",
+      "background": "var(--wp--preset--color--background)"
+    },
+    "typography": {
+      "fontFamily": "var(--wp--preset--font-family--poppins)",
+      "fontSize": "var(--wp--preset--font-size--base)",
+      "lineHeight": "1.6"
+    },
+    "elements": {
+      "link": {
+        "color": { "text": "var(--wp--preset--color--primary)" }
+      },
+      "heading": {
+        "typography": { "fontFamily": "var(--wp--preset--font-family--poppins)", "lineHeight": "1.2" },
+        "color": { "text": "var(--wp--preset--color--foreground)" }
+      }
+    }
+  },
+  "customTemplates": [
+    { "name": "landing", "title": "Landing Page", "postTypes": ["page"] }
+  ],
+  "templateParts": [
+    { "name": "header", "title": "Header", "area": "header" },
+    { "name": "footer", "title": "Footer", "area": "footer" }
+  ]
+}

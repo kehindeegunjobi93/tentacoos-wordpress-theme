@@ -1,0 +1,843 @@
+/* Join us buttons: shared hover/focus darken */
+.hero-cta__btn,
+.gradient-cta-btn,
+.difference-cta,
+.mobile-cta,
+.topbar-cta .wp-block-button__link {
+  transition: background-color 160ms ease, color 160ms ease, filter 160ms ease, transform 80ms ease;
+  cursor: pointer;
+}
+
+/* Cursor: ensure all actionable items always show pointer (final override) */
+a[href],
+button,
+input[type="submit"],
+input[type="button"],
+select,
+label[for],
+.wp-block-button__link,
+.wp-block-navigation a,
+.wp-block-navigation-item,
+.wp-block-navigation-item__content,
+.mobile-menu-toggle,
+.mobile-menu-panel a,
+.hero-cta__btn,
+.gradient-cta-btn,
+.difference-cta,
+.mobile-cta {
+  cursor: pointer !important;
+}
+
+/* Card pointer fixes (clickable cards) */
+.difference-card,
+.difference-card figure,
+.difference-card figcaption { cursor: pointer !important; }
+/* Additional card types */
+.solution-card,
+.impact-card,
+.program-card,
+.program-card .program-media,
+.program-card .program-caption { cursor: pointer !important; }
+.hero-cta__btn:hover,
+.hero-cta__btn:focus-visible,
+.gradient-cta-btn:hover,
+.gradient-cta-btn:focus-visible,
+.difference-cta:hover,
+.difference-cta:focus-visible,
+.mobile-cta:hover,
+.mobile-cta:focus-visible,
+.topbar-cta .wp-block-button__link:hover,
+.topbar-cta .wp-block-button__link:focus-visible {
+  background-color: #0b8f8f !important; /* darker teal */
+  filter: brightness(0.98);
+}
+
+/* Form send buttons */
+.lead-btn,
+.footer-cta__btn {
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease, filter 160ms ease;
+  cursor: pointer;
+}
+.lead-btn:hover,
+.lead-btn:focus-visible,
+.footer-cta__btn:hover,
+.footer-cta__btn:focus-visible {
+  background-color: #0b8f8f !important;
+  border-color: rgba(0,0,0,0.15);
+  filter: brightness(0.98);
+}
+
+/* Ensure pointer cursor for all actionable controls site-wide */
+a[href],
+button,
+input[type="submit"],
+.wp-block-button__link,
+.wp-block-navigation-item__content,
+.mobile-cta,
+.gradient-cta-btn,
+.difference-cta,
+.hero-cta__btn,
+.mobile-menu-toggle { cursor: pointer; }
+
+/* Ensure nav items are clickable and have hover feedback */
+.wp-block-navigation-item__content { cursor: pointer; }
+.wp-block-navigation-item__content:hover,
+.wp-block-navigation-item__content:focus-visible { color: #0CC0C0 !important; text-decoration: underline; text-underline-offset: 3px; }
+/* Front-end overrides and enhancements for Tentacoos theme
+   - Keep most design tokens in theme.json
+   - Use this file for small utilities or component-specific tweaks
+*/
+
+/* Example utility classes */
+.section-padding {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+/* Force-hide mobile-only nav on desktop */
+@media (min-width: 901px) {
+  .mobile-menu-panel { display: none !important; }
+  .menu-backdrop { display: none !important; }
+  .mobile-menu-toggle { display: none !important; }
+  .mobile-panel-cta, .mobile-cta { display: none !important; }
+}
+/* Smooth scroll for anchor links */
+html { scroll-behavior: smooth; }
+
+/* Mobile nav */
+.pill-bar { gap: 1rem; position: relative; z-index: 1001; }
+.mobile-menu-toggle {
+  display: none;
+  position: relative;
+  width: 36px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+.mobile-menu-toggle span {
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  height: 3px;
+  background: #0f172a;
+  border-radius: 2px;
+  transition: transform 200ms ease, opacity 200ms ease, top 200ms ease;
+}
+.mobile-menu-toggle span:nth-child(1) { top: 5px; }
+.mobile-menu-toggle span:nth-child(2) { top: 12px; }
+.mobile-menu-toggle span:nth-child(3) { top: 19px; }
+.mobile-menu-toggle[aria-expanded="true"] span:nth-child(1) { top: 12px; transform: rotate(45deg); }
+.mobile-menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.mobile-menu-toggle[aria-expanded="true"] span:nth-child(3) { top: 12px; transform: rotate(-45deg); }
+
+/* WP nav block wrapper */
+.site-menu { transition: grid-template-rows 250ms ease, opacity 200ms ease; }
+
+@media (max-width: 900px) {
+  .mobile-menu-toggle { display: inline-block; margin-left: auto; }
+  /* Ensure the header bar doesn't render a colored pill on mobile */
+  .pill-bar { background: transparent !important; border: 0 !important; box-shadow: none !important; border-radius: 0 !important; overflow: visible !important; padding-left: 1rem; padding-right: 1rem; }
+  .wp-block-group.alignfull.pill-bar { background: transparent !important; }
+  /* Hide WP nav block in favor of custom panel on mobile */
+  .site-menu { display: none !important; }
+  nav.wp-block-navigation, .wp-block-navigation { display: none !important; }
+  .pill-bar { flex-wrap: wrap; }
+  .topbar-cta { display: none !important; }
+  .wp-block-buttons .wp-block-button.topbar-cta { display: none !important; }
+  /* Hide any header-level mobile CTA wrapper next to the hamburger */
+  .mobile-cta-wrap { display: none !important; }
+  /* Stack links vertically with larger tap targets */
+  .wp-block-navigation__container { flex-direction: column !important; align-items: stretch; gap: 0; }
+  .wp-block-navigation__container > .wp-block-navigation-item { border-bottom: 1px solid #e2e8f0; }
+  .wp-block-navigation__container > .wp-block-navigation-item:last-child { border-bottom: 0; }
+  .wp-block-navigation-item__content { padding: 0.85rem 0; display: block; color: #0f172a !important; font-weight: 600; opacity: 0; transform: translateY(-4px); animation: navFadeIn 220ms ease forwards; }
+
+  /* Custom mobile panel */
+  .mobile-menu-panel {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    border-bottom: 1px solid #e2e8f0;
+    border-radius: 0 0 12px 12px;
+    padding: 0.5rem 1rem 1rem;
+    z-index: 9999;
+    display: none;
+  }
+  .mobile-menu-panel.open { display: block; }
+  .mobile-menu-panel ul { list-style: none; margin: 0; padding: 0; }
+  .mobile-menu-panel li { border-bottom: 1px solid #e2e8f0; }
+  .mobile-menu-panel li:last-child { border-bottom: 0; }
+  .mobile-menu-panel a { display: block; padding: 0.85rem 0; color: #0f172a; text-decoration: none; font-weight: 600;         text-align: center; }
+  .mobile-menu-panel a { cursor: pointer; }
+  .mobile-menu-panel a:hover,
+  .mobile-menu-panel a:focus-visible { background: #CFFCFC; color: #0b3b3b; border-radius: 8px; }
+  .mobile-panel-cta { margin-top: 0.75rem; }
+  .mobile-cta { display: inline-block; background: #0CC0C0; color: #fff; padding: 0.7rem 1.15rem; border-radius: 999px; text-decoration: none; font-weight: 700; }
+}
+
+@keyframes navFadeIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Backdrop overlay when menu is open */
+@media (max-width: 900px) {
+  .menu-backdrop { display: none; }
+  .menu-backdrop.active { display: block; position: fixed; inset: 0; background: rgba(0,0,0,0.25); z-index: 9998; }
+  body.menu-open { overflow: hidden; }
+}
+/* Footer */
+.site-footer {
+  background: #08373A;
+  color: #E6FAF8;
+  padding: 4rem 1rem 5rem;
+}
+.footer-inner { text-align: center; }
+.footer-cta__title {
+  margin: 0 0 0.75rem 0;
+  color: #E6FAF8;
+}
+.footer-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(255,255,255,0.06);
+  border: 2px solid rgba(255,255,255,0.6);
+  border-radius: 12px;
+  padding: 0.35rem;
+}
+.footer-cta__input-wrap input[type="email"] {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #E6FAF8;
+  padding: 0.55rem 0.85rem;
+  min-width: 260px;
+}
+.footer-cta__input-wrap input::placeholder { color: rgba(230,250,248,0.75); }
+.footer-cta__btn {
+  appearance: none;
+  border: 2px solid rgba(255,255,255,0.6);
+  background: #0CC0C0;
+  color: #0b2b2d;
+  padding: 0.5rem 1.1rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.footer-contact { margin: 1rem 0 0.25rem 0; color: #CFF3EF; }
+.footer-copy { margin: 0.25rem 0 0 0; color: #A6DAD5; }
+/* FAQ section */
+.faq-section {
+  padding: 4rem 1rem;
+  background: linear-gradient(135deg, #CFFCFC 0%, #ffffff 60%);
+}
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: start;
+}
+.faq-intro h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  color: #0f172a;
+}
+.faq-intro p { color: #64748b; }
+.faq-items { max-width: 640px; margin-left: auto; }
+.faq-item { border-bottom: 1px solid #e2e8f0; }
+.faq-q {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 1rem 0;
+  text-align: left;
+  display: flex;
+  justify-content: flex-start; /* allow custom gap */
+  gap: 1rem; /* add a base gap */
+  align-items: center;
+  font-size: 1.05rem;
+  color: #0f172a;
+  cursor: pointer;
+}
+.faq-q span:first-child { flex: 1; }
+.faq-q[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+.faq-icon { transition: transform 180ms ease; margin-left: 1.5rem; }
+.faq-a { padding: 0 0 1rem 0; color: #475569; }
+@media (max-width: 900px) {
+  .faq-grid { grid-template-columns: 1fr; }
+  .faq-items { margin-left: 0; }
+}
+/* Gradient CTA section */
+.gradient-cta-section {
+  padding: 4rem 1rem 4rem;
+  background: linear-gradient(135deg, #ffffff 40%, #CFFCFC 100%);
+}
+.gradient-cta-section .wp-block-heading {
+  color: #334155;
+  font-weight: 700;
+  font-size: clamp(2rem, 4.2vw, 2.75rem);
+  margin-bottom: 0.75rem;
+}
+.gradient-cta-subtitle {
+  color: #64748b;
+  max-width: 820px;
+  margin: 0 auto 1.5rem;
+}
+.gradient-cta-actions { text-align: center; }
+.gradient-cta-btn {
+  display: inline-block;
+  background: #0CC0C0;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  min-width: 180px;
+}
+.gradient-cta-btn:hover { filter: brightness(0.98); }
+/* Lead (Learn a skill) section */
+.lead-section { padding: 4rem 1rem 3.5rem; }
+.lead-section .wp-block-heading {
+  color: #334155;
+  font-weight: 700;
+  font-size: clamp(1.9rem, 3.8vw, 2.6rem);
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+.lead-subtitle {
+  color: #64748b;
+  max-width: 720px;
+  margin: 0 auto 1.5rem;
+  text-align: center;
+}
+.lead-form {
+  max-width: 560px;
+  margin: 0 auto;
+}
+.lead-form__row { display: grid; gap: 0.75rem; margin-bottom: 0.75rem; }
+.lead-form__row--two { grid-template-columns: 1fr 1fr; }
+.lead-field { display: grid; gap: 0.35rem; }
+.lead-label { font-size: 0.85rem; color: #64748b; }
+.lead-field input,
+.lead-field select {
+  width: 100%;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.65rem 0.75rem;
+  font-size: 0.95rem;
+}
+.lead-field input:focus,
+.lead-field select:focus { outline: none; border-color: #0CC0C0; box-shadow: 0 0 0 3px rgba(12,192,192,0.15); }
+.lead-field--full { grid-column: 1 / -1; }
+.lead-form__actions { text-align: center; margin-top: 0.5rem; }
+.lead-btn {
+  display: inline-block;
+  background: #0CC0C0;
+  color: #fff;
+  padding: 0.7rem 1.25rem;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  min-width: 220px;
+  cursor: pointer;
+}
+.lead-btn:hover { filter: brightness(0.98); }
+@media (max-width: 560px) {
+  .lead-form__row--two { grid-template-columns: 1fr; }
+}
+/* Difference section */
+.difference-section {
+  padding: 4rem 1rem 3rem;
+  /* Smoother gradients with intermediate stops to reduce banding */
+  background:
+    radial-gradient(1000px 500px at 0% 100%,
+      rgba(255,237,204,0.30) 0%,
+      rgba(255,237,204,0.18) 35%,
+      rgba(255,237,204,0.10) 60%,
+      rgba(255,237,204,0.00) 78%
+    ),
+    radial-gradient(900px 500px at 100% 0%,
+      rgba(8,55,58,0.40) 0%,
+      rgba(8,55,58,0.26) 35%,
+      rgba(8,55,58,0.12) 60%,
+      rgba(8,55,58,0.00) 78%
+    ),
+    linear-gradient(#08373A, #08373A);
+  color: #E6FAF8;
+}
+.difference-section .wp-block-heading {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: clamp(1.9rem, 3.8vw, 2.6rem);
+  margin-bottom: 0.5rem;
+}
+.difference-subtitle {
+  color: #CFF3EF;
+  margin: 0 0 1.75rem 0;
+}
+.difference-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2rem; /* more space between images on desktop */
+  max-width: 1200px;
+  margin: 0 auto 2.5rem; /* more gap above the button */
+}
+.difference-card {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 180ms ease;
+}
+.difference-card figure {
+  margin: 0 0 0.65rem 0;
+  width: 297px;
+  height: 297px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px solid rgba(255,255,255,0.45);
+  background: rgba(255,255,255,0.06);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.22);
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+.difference-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.difference-card figcaption {
+  color: #E6FAF8;
+  text-align: center;
+  padding: 0 0.5rem;
+}
+.difference-card:hover { transform: translateY(-4px); }
+.difference-card:hover figure {
+  box-shadow: 0 12px 36px rgba(0,0,0,0.28);
+  border-color: #CC8400; /* brand orange */
+}
+.difference-cta-wrap { text-align: center; }
+.difference-cta {
+  display: inline-block;
+  background: #0CC0C0;
+  color: #fff;
+  padding: 0.8rem 1.75rem; /* a bit taller and wider */
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  min-width: 220px; /* increase button width */
+  text-align: center;
+}
+.difference-cta:hover { filter: brightness(0.98); }
+@media (max-width: 1024px) {
+  .difference-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+}
+@media (max-width: 600px) {
+  .difference-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+}
+@media (max-width: 360px) {
+  .difference-card figure { width: 240px; height: 240px; }
+}
+
+/* Solutions section */
+.solutions-section { padding: 3.5rem 1rem; }
+.solutions-section .wp-block-heading {
+  color: #334155;
+  font-weight: 600;
+  font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+  margin-bottom: 1.75rem;
+}
+.solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto 1rem;
+}
+.solution-card {
+  background: #0CC0C0;
+  color: #ffffff;
+  border-radius: 24px;
+  padding: 1.75rem;
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+  border: 1.5px solid rgba(0,0,0,0.06);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+.solution-card p { margin: 0; }
+.solution-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.12);
+  border-color: #CC8400;
+}
+.solutions-caption {
+  color: #475569;
+  max-width: 800px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  .solutions-grid { grid-template-columns: 1fr; }
+}
+
+/* Programs section */
+.programs-section { padding: 3.5rem 1rem; }
+.programs-section .wp-block-heading {
+  color: #334155;
+  font-weight: 600;
+  font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+  margin-bottom: 0.5rem;
+}
+.programs-subtitle {
+  color: #64748b;
+  margin: 0 0 1.75rem 0;
+}
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.program-card {
+  border-radius: 28px;
+  padding: 1.25rem;
+  color: #ffffff;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.12);
+}
+.program-card--teal { background: #08373A; }
+.program-card--brown { background: #3A2A12; }
+.program-media {
+  border-radius: 18px;
+  padding: 10px;
+  background: rgba(255,255,255,0.08);
+  border: 2px solid rgba(255,255,255,0.75);
+}
+.program-media img { display: block; width: 100%; height: auto; border-radius: 12px; }
+.program-caption {
+  margin: 0.75rem auto 0;
+  text-align: center;
+  color: #E6FAF8;
+  max-width: 90%;
+}
+@media (max-width: 900px) {
+  .programs-grid { grid-template-columns: 1fr; }
+}
+.text-center {
+  text-align: center;
+}
+
+/* Remove default browser/page top margin/padding to avoid white strip */
+html, body { margin: 0; }
+.wp-site-blocks { padding-top: 0 !important; }
+.wp-site-blocks > *:first-child { margin-block-start: 0 !important; }
+:where(.wp-site-blocks) > .alignfull:first-child { margin-top: 0 !important; }
+
+/* Learn a skill form: spacing and overflow guard */
+.lead-section { padding-left: 1rem; padding-right: 1rem; }
+.lead-form { max-width: 900px; margin: 0 auto; padding-left: 1rem; padding-right: 1rem; }
+.lead-form__row { display: flex; gap: 1rem; }
+.lead-form__row--two > .lead-field { flex: 1; min-width: 0; }
+.lead-field input,
+.lead-field select {
+  width: 100%;
+  box-sizing: border-box;
+}
+@media (max-width: 700px) {
+  .lead-form { padding-left: 1rem; padding-right: 1rem; }
+  .lead-form__row { flex-direction: column; }
+}
+
+/* Hide desktop CTA on tablets too */
+@media (max-width: 1024px) {
+  .topbar-cta { display: none !important; }
+  .wp-block-buttons .wp-block-button.topbar-cta { display: none !important; }
+}
+
+/* Active link styles */
+.wp-block-navigation .current-menu-item .wp-block-navigation-item__content,
+.wp-block-navigation-item__content.is-active {
+  color: #0CC0C0 !important;
+}
+.wp-block-navigation-item__content:hover { color: #0b8f8f !important; }
+/* Desktop nav item hover underline */
+.wp-block-navigation-item__content:hover { text-decoration: underline; text-underline-offset: 3px; }
+/* Make header overlay the hero and remove any background */
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+/* Force all header inner groups to be transparent (avoid inherited white bg) */
+header.wp-block-template-part,
+header .wp-block-group,
+header .wp-block-navigation {
+}
+/* Offset when logged-in admin bar is present */
+body.admin-bar header { top: 32px; }
+@media screen and (max-width: 782px) {
+  body.admin-bar header { top: 46px; }
+}
+
+/* Pill-style top bar */
+.pill-bar {
+  background: #CC8400; /* explicit brand color for full-width bar */
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  gap: 0.75rem;
+  align-items: center;
+  /* nearly full-bleed with equal side gutters */
+  --pill-gutter: 16px; /* base mobile gutter */
+  width: calc(100vw - (var(--pill-gutter) * 2));
+  max-width: calc(100vw - (var(--pill-gutter) * 2));
+  margin-left: calc(50% - 50vw + var(--pill-gutter));
+  margin-right: calc(50% - 50vw + var(--pill-gutter));
+  margin-top: 3rem; /* vertical position under top */
+  box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+/* Responsive gutters */
+@media (min-width: 640px) {
+  .pill-bar { --pill-gutter: 24px; }
+}
+@media (min-width: 768px) {
+  .pill-bar { --pill-gutter: 40px; }
+}
+@media (min-width: 1024px) {
+  .pill-bar { --pill-gutter: 120px; }
+}
+@media (min-width: 1440px) {
+  .pill-bar { --pill-gutter: 240px; }
+}
+
+/* Avoid horizontal scrollbar from 100vw technique in some browsers */
+header { overflow-x: clip; }
+.pill-bar .wp-block-navigation { 
+  margin-left: auto; /* push nav to the right */
+}
+.pill-bar .wp-block-buttons { 
+  margin-left: 0.75rem; /* keep CTA close to nav */
+}
+.pill-bar .wp-block-navigation a,
+.pill-bar .wp-block-navigation .wp-block-navigation-item__content,
+.pill-bar .wp-block-navigation a:link,
+.pill-bar .wp-block-navigation a:visited {
+  color: #ffffff !important;
+}
+.pill-bar .wp-block-navigation a:hover,
+.pill-bar .wp-block-navigation a:focus,
+.pill-bar .wp-block-navigation a:active {
+  color: #0CC0C0 !important;
+  opacity: 0.95;
+}
+.pill-bar .topbar-cta .wp-block-button__link {
+  padding: 0.5rem 1.25rem; /* slightly wider */
+  border-radius: 999px;
+  background-color: #0CC0C0 !important; /* requested color */
+  min-width: 110px; /* increase width without changing font size */
+  text-align: center;
+}
+
+/* Logo size inside pill bar */
+.pill-logo img {
+  height: 24px; /* reduced logo size */
+  max-height: 24px;
+  width: auto;
+  display: block;
+}
+
+/* Hero cover background with dark overlay */
+.hero-cover {
+  min-height: 100vh;
+  position: relative;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 8.5rem 1rem 6rem; /* extra top room under header */
+  color: #ffffff;
+  /* darken overlay for stronger contrast */
+  background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../images/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: 0 !important; /* remove any block gap above hero */
+  background-color: #0b0b0b; /* fallback to avoid white flash */
+}
+.hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.hero-cover .wp-block-heading {
+  color: #ffffff;
+  font-size: clamp(2.25rem, 6vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+.hero-cover p {
+  color: #e5e7eb; /* light gray */
+  max-width: 52ch;
+  margin: 0 auto 1.5rem auto;
+}
+
+/* Hero buttons */
+.hero-actions .wp-block-button__link {
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
+}
+.hero-btn-outline .wp-block-button__link {
+  background: rgba(255,255,255,0.9) !important;
+  color: #0f172a !important; /* dark text */
+}
+
+/* Hero email CTA pill */
+.hero-cta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(209, 250, 249, 0.95); /* light teal */
+  border-radius: 999px;
+  padding: 0.3rem;
+  width: min(90vw, 320px);
+  margin: 0.75rem auto 0;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+  backdrop-filter: saturate(120%) blur(2px);
+}
+.hero-cta__label {
+  color: #334155; /* slate-700 */
+  font-weight: 600;
+  padding: 0.5rem 0.9rem;
+  white-space: nowrap;
+}
+.hero-cta__input-wrap {
+  flex: 1 1 auto;
+}
+.hero-cta__input-wrap input[type="email"] {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #0f172a;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.95rem;
+}
+.hero-cta__input-wrap input::placeholder {
+  color: #64748b; /* muted */
+}
+.hero-cta__btn {
+  appearance: none;
+  border: none;
+  border-radius: 999px;
+  background: #0CC0C0; /* requested color */
+  color: #fff;
+  font-weight: 700;
+  padding: 0.65rem 1.1rem; /* slightly wider */
+  white-space: nowrap;
+  cursor: pointer;
+  min-width: 110px; /* increase width without changing font size */
+}
+.hero-cta__btn:hover {
+  filter: brightness(0.98);
+}
+
+@media (max-width: 480px) {
+  .hero-cta__label { display: none; }
+}
+
+/* Impact section (after hero) */
+.impact-section {
+  padding: 3.5rem 1rem;
+}
+.impact-section .wp-block-heading {
+  color: #334155;
+  font-weight: 600;
+  font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+  margin-bottom: 2rem;
+}
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem; /* space between cards */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.impact-card {
+  border-radius: 24px;
+  padding: 1.5rem 1.5rem;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+  border: 1.5px solid rgba(0,0,0,0.06);
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+.impact-card p { margin: 0; }
+.impact-card--teal {
+  background: #0CC0C0; /* brand teal */
+  color: #ffffff;
+}
+.impact-card--light {
+  background: #D9FBF8; /* light teal */
+  color: #0f172a;
+  border-color: #A7EFEA; /* subtle teal border on light card */
+}
+@media (max-width: 768px) {
+  .impact-grid { grid-template-columns: 1fr; }
+}
+
+/* Mission section */
+.mission-section {
+  background: #08373A; /* deep teal to match mock */
+  color: #E6FAF8;
+  padding: 4rem 1rem;
+}
+.mission-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr; /* text a bit wider than image */
+  align-items: center;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.mission-text h2 {
+  margin: 0 0 1rem 0;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  color: #ffffff;
+}
+.mission-text p {
+  margin: 0;
+  color: #D9FBF8;
+}
+.mission-figure {
+  margin: 0;
+  border: 2px solid #E6FAF8;
+  border-radius: 18px;
+  overflow: hidden;
+}
+.mission-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+@media (max-width: 900px) {
+  .mission-grid { grid-template-columns: 1fr; }
+}
+/* Hover state for cards */
+.impact-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.12);
+  border-color: #CC8400; /* brand orange on hover */
+}
